@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Switch } from "react-router-dom";
+import ContactForm from "./component/ContactForm";
+import ContactList from "./component/ContactList";
+import ContactDetails from "./component/ContactDetails";
+import EditContact from "./component/EditContact";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Switch>
+        <Route path="/edit/:id" component={EditContact} />
+        <Route path="/user/:id" component={ContactDetails} />
+        <Route path="/add" component={ContactForm} />
+        <Route path="/" exact={true} component={ContactList} />
+      </Switch>
+      </div>
   );
 }
 
